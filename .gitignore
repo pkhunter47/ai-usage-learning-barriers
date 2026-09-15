@@ -19,6 +19,8 @@ outputs/
 results/
 checkpoints/
 artifacts/
+config.json
+survey.csv
 *.npy
 *.npz
 *.pt

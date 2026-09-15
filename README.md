@@ -49,6 +49,21 @@ Raw participant responses are not included. Public release requires confirmation
 
 See [docs/STUDY_DESIGN.md](docs/STUDY_DESIGN.md) for the reporting checklist.
 
+## Analysis scaffold
+
+This repository includes a privacy-safe screening workflow for construct reliability, HTMT diagnostics, standardized path estimates, and bootstrap estimation of the sequential indirect association. It operates on a user-supplied de-identified CSV; no participant records are included.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp config.example.json config.json
+# Replace the example item names with the de-identified CSV columns.
+python analysis/run_screening_analysis.py survey.csv config.json --output results
+```
+
+This transparent composite-score analysis is **not an exact replacement for the original PLS-SEM software workflow**. Exact reproduction requires the original item mapping, coding decisions, missing-data treatment, PLS settings, and ethically releasable data.
+
 ## Contact
 
 **Protik Biswas** · [GitHub](https://github.com/pkhunter47) · [LinkedIn](https://www.linkedin.com/in/protik-biswas-83001827b/) · [Email](mailto:protikbiswas3099@gmail.com)

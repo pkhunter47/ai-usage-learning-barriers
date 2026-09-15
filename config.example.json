@@ -1,0 +1,11 @@
+{
+  "constructs": {
+    "constraints": ["CON1", "CON2", "CON3"],
+    "frustration": ["FRU1", "FRU2", "FRU3"],
+    "tool_switching": ["SWI1", "SWI2", "SWI3"],
+    "learning_effectiveness": ["LE1", "LE2", "LE3"],
+    "prompting_skill": ["PS1", "PS2", "PS3"]
+  },
+  "bootstrap_samples": 10000,
+  "seed": 47
+}
