@@ -12,7 +12,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import statsmodels.api as sm
 
 
 REQUIRED = ("constraints", "frustration", "tool_switching", "learning_effectiveness", "prompting_skill")
@@ -44,8 +43,9 @@ def zscore(series: pd.Series) -> pd.Series:
 
 
 def coefficient(data: pd.DataFrame, outcome: str, predictors: list[str], target: str) -> float:
-    fit = sm.OLS(data[outcome], sm.add_constant(data[predictors], has_constant="add")).fit()
-    return float(fit.params[target])
+    design = np.column_stack([np.ones(len(data)), data[predictors].to_numpy(dtype=float)])
+    estimates, *_ = np.linalg.lstsq(design, data[outcome].to_numpy(dtype=float), rcond=None)
+    return float(estimates[1 + predictors.index(target)])
 
 
 def path_estimates(scores: pd.DataFrame) -> dict[str, float]:
